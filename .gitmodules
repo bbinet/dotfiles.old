@@ -34,10 +34,6 @@
     path = .vim/bundle/unimpaired
     url = http://github.com/tpope/vim-unimpaired.git
     ignore = untracked
-[submodule ".vim/bundle/jslint"]
-    path = .vim/bundle/jslint
-    url = http://github.com/mattn/jslint.vim.git
-    ignore = untracked
 [submodule ".vim/bundle/gundo"]
     path = .vim/bundle/gundo
     url = http://github.com/sjl/gundo.vim.git
