@@ -27,4 +27,4 @@
     excludesfile = ~/.global_gitignore
 
 [merge]
-	tool = vimdiff
+    tool = vimdiff
