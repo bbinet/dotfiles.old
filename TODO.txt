@@ -1,0 +1,20 @@
+* start a new .vimrc from scratch
+* list of vim plugins:
+  * pathogen https://github.com/tpope/vim-pathogen
+  * surround https://github.com/tpope/vim-surround
+  * repeat https://github.com/tpope/vim-repeat
+  * fugitive https://github.com/tpope/vim-fugitive
+  * rhubarb https://github.com/tpope/vim-rhubarb
+  * commentary.vim https://github.com/tpope/vim-commentary
+  * gist
+  * jslint/jshint
+  * gundo
+  * yankring
+  * matchit
+  * nerdtree
+  * flake8.vim
+  * ctrlp.vim https://github.com/kien/ctrlp.vim
+  * easymotion?
+  * unimpaired? https://github.com/tpope/vim-unimpaired
+  * snipMate?
+
