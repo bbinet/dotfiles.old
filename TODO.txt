@@ -14,7 +14,14 @@
   * nerdtree
   * flake8.vim
   * ctrlp.vim https://github.com/kien/ctrlp.vim
+  * argtextobj https://github.com/vim-scripts/argtextobj.vim
+  * file-line https://github.com/bogado/file-line
+
+  * zencoding?
   * easymotion?
   * unimpaired? https://github.com/tpope/vim-unimpaired
   * snipMate?
+  * bufexplorer?
+  * solarized? https://github.com/altercation/vim-colors-solarized
+  * coffee-script? https://github.com/kchmck/vim-coffee-script
 
