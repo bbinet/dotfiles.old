@@ -6,22 +6,29 @@
   * fugitive https://github.com/tpope/vim-fugitive
   * rhubarb https://github.com/tpope/vim-rhubarb
   * commentary.vim https://github.com/tpope/vim-commentary
-  * gist
-  * jslint/jshint
-  * gundo
-  * yankring
-  * matchit
-  * nerdtree
-  * flake8.vim
+  * gist https://github.com/mattn/gist-vim
+  * jslint/jshint => syntastic instead
+  * taglist-plus https://github.com/klen/vim-taglist-plus/
+                 https://github.com/mozilla/doctorjs
+  * gundo https://github.com/sjl/gundo.vim
+  * yankring https://github.com/vim-scripts/YankRing.vim
+  * matchit https://github.com/vim-scripts/matchit.zip
+  * nerdtree https://github.com/scrooloose/nerdtree
+  * flake8.vim https://github.com/avidal/flake8.vim => syntastic instead
   * ctrlp.vim https://github.com/kien/ctrlp.vim
   * argtextobj https://github.com/vim-scripts/argtextobj.vim
+  * vim-indent-object https://github.com/michaeljsmith/vim-indent-object
   * file-line https://github.com/bogado/file-line
+  * syntastic https://github.com/scrooloose/syntastic
+  * vim-indent-object: https://github.com/michaeljsmith/vim-indent-object
 
-  * zencoding?
-  * easymotion?
+  * argtextobj? https://github.com/vim-scripts/argtextobj.vim
+  * zencoding? https://github.com/mattn/zencoding-vim
+  * easymotion? https://github.com/Lokaltog/vim-easymotion
   * unimpaired? https://github.com/tpope/vim-unimpaired
-  * snipMate?
-  * bufexplorer?
+  * snipMate? https://github.com/msanders/snipmate.vim
+  * snipmate-snippets? https://github.com/honza/snipmate-snippets
+  * bufexplorer? https://github.com/vim-scripts/bufexplorer.zip
   * solarized? https://github.com/altercation/vim-colors-solarized
   * coffee-script? https://github.com/kchmck/vim-coffee-script
 
