@@ -191,5 +191,9 @@ map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 " Save when losing focus
 au FocusLost * :wa
 
+" change color scheme when calling vimdiff inside vim
+au FilterWritePost * if &diff | set t_Co=256 | set bg=dark | colorscheme slate | else | colorscheme molokai | endif
+au BufWinLeave * colorscheme molokai
+
 " ack-grep word under cursor
 noremap <leader># "ayiw:Ack <c-r>a<CR>
