@@ -134,6 +134,7 @@ nmap <leader>l :set list!<CR>
 map <leader><space> :noh<cr>
 
 " Special filetype conf
+au FileType html setlocal textwidth=0
 au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.less setf less
 au BufNewFile,BufRead *.map setf map
