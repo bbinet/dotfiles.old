@@ -3,7 +3,8 @@ export ZSH=$HOME/.oh-my-zsh
 
 # Set to the name theme to load.
 # Look in ~/.oh-my-zsh/themes/
-export ZSH_THEME="robbyrussell"
+export ZSH_THEME="prose"
+export DISABLE_AUTO_UPDATE="true"
 
 # 256 colors
 export TERM="xterm-256color"
@@ -19,18 +20,17 @@ export TERM="xterm-256color"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git zsh-syntax-highlighting brew osx)
 
 # Nicer prompt
 source $ZSH/oh-my-zsh.sh
-source ~/.prose.zsh-theme
 
 # Customize to your needs...
-export PATH=$HOME/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:usr/local/git/bin:/usr/X11/bin:/opt/local/bin
+export PATH=$HOME/local/node/bin:$HOME/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:usr/local/git/bin:/usr/X11/bin:/opt/local/bin:/Library/PostgreSQL/8.4/bin
+export NODE_PATH=/usr/local/lib/node_modules
 
-# Battery indicator
-#export BAT_CHARGE=$HOME/bin/batcharge.py
-#RPROMPT='$(battery_charge)'
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # z is the new j
 source $HOME/.zsh/z-zsh/z.sh
@@ -38,9 +38,10 @@ function precmd () {
     z --add "$(pwd -P)"
 }
 alias j=z
+alias f='find . -name'
 
 # task list
-alias t='python ~/bin/t/t.py --task-dir ~/Documents/Dropbox/tasks --list tasks'
+alias t='python ~/Documents/Dropbox/bin/t.py --task-dir ~/Documents/Dropbox/tasks --list tasks'
 
 # git svn externals
 alias git-co-externals='git svn show-externals | grep "^/" | sed "s|^/\([^ ]*\)\(.*\) \(.*\)|(mkdir -p \1 \&\& cd \1 \&\& if [ -d .svn ]; then echo \"svn up \2 \1\" \&\& svn up \2 ; else echo \"svn co \2 \3 \1\" \&\& svn co \2 \3 . ; fi)|" | sh'
@@ -48,8 +49,8 @@ alias git-co-externals='git svn show-externals | grep "^/" | sed "s|^/\([^ ]*\)\
 # cd to git root dir
 alias gitroot='cd $(git rev-parse --show-cdup)'
 
-# static serve files
-alias serve='python -m SimpleHTTPServer'
+# svn
+alias svnd='svn diff | colordiff | less'
 
 # vim only
 export EDITOR=vim
@@ -61,3 +62,10 @@ export LESS='-R -F -X'
 
 # tmux
 alias tma='tmux attach -t'
+
+# virtualenvwrapper
+export WORKON_HOME=~/Library/Envs
+if [[ -s /usr/local/bin/virtualenvwrapper.sh ]] ; then alias vv='source /usr/local/bin/virtualenvwrapper.sh' ; fi
+
+# local settings
+if [[ -s $HOME/.zshrc_local ]] ; then source $HOME/.zshrc_local ; fi

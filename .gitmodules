@@ -22,10 +22,6 @@
     path = .vim/bundle/repeat
     url = https://github.com/tpope/vim-repeat.git
     ignore = untracked
-[submodule ".vim/bundle/nerdcommenter"]
-    path = .vim/bundle/nerdcommenter
-    url = https://github.com/scrooloose/nerdcommenter.git
-    ignore = untracked
 [submodule ".vim/bundle/bufexplorer"]
     path = .vim/bundle/bufexplorer
     url = http://github.com/markabe/bufexplorer.git
@@ -46,3 +42,41 @@
     path = .vim/bundle/tabular
     url = https://github.com/godlygeek/tabular.git
     ignore = untracked
+[submodule ".vim/bundle/solarized"]
+	path = .vim/bundle/solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+    ignore = untracked
+[submodule ".vim/bundle/jslint"]
+	path = .vim/bundle/jslint
+	url = git://github.com/hallettj/jslint.vim.git
+    ignore = untracked
+[submodule ".oh-my-zsh"]
+	path = .oh-my-zsh
+	url = https://github.com/sjl/oh-my-zsh.git
+    ignore = dirty
+[submodule ".vim/bundle/vim-coffee-script"]
+	path = .vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule ".vim/bundle/file-line"]
+	path = .vim/bundle/file-line
+	url = https://github.com/bogado/file-line.git
+[submodule ".vim/bundle/vim-commentary"]
+	path = .vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule ".vim/bundle/vim-jade"]
+	path = .vim/bundle/vim-jade
+	url = https://github.com/digitaltoad/vim-jade.git
+[submodule ".vim/bundle/argtextobj.vim"]
+	path = .vim/bundle/argtextobj.vim
+	url = https://github.com/vim-scripts/argtextobj.vim.git
+[submodule ".vim/bundle/ctrlp.vim"]
+	path = .vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+    ignore = untracked
+[submodule ".vim/bundle/zencoding"]
+	path = .vim/bundle/zencoding
+	url = https://github.com/mattn/zencoding-vim.git
+    ignore = untracked
+[submodule ".vim/bundle/matchtag"]
+	path = .vim/bundle/matchtag
+	url = https://github.com/gregsexton/MatchTag.git
