@@ -378,9 +378,6 @@ au FileType javascript setlocal foldmarker={,}
 au FileType html setlocal foldmethod=manual
 " }}}
 
-nnoremap   za
-vnoremap   za
-
 function! MyFoldText() " {{{
     let line = getline(v:foldstart)
 
