@@ -1,7 +1,9 @@
 " Pathogen {{{
 filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+" calling helptags slow down vim opening
+"call pathogen#helptags()
 filetype plugin indent on
 " }}}
 
@@ -114,6 +116,18 @@ let g:yankring_max_history = 10
 let g:yankring_max_element_length = 512000
 let g:yankring_history_file = '.vim_yankring_history'
 " }}}
+
+" Python-mode {{{
+
+" Load pylint code plugin
+let g:pymode_lint = 1
+" Switch pylint, pyflakes, pep8, mccabe code-checkers
+" Can have multiply values "pep8,pyflakes,mcccabe"
+let g:pymode_lint_checker = "pylint"
+" Check code every save
+let g:pymode_lint_write = 0
+
+" }}} 
 
 " Insert <Tab> or complete identifier {{{
 " if the cursor is after a keyword character
