@@ -115,6 +115,8 @@ nnoremap <F5> :GundoToggle<CR>
 let g:yankring_max_history = 10
 let g:yankring_max_element_length = 512000
 let g:yankring_history_file = '.vim_yankring_history'
+let g:yankring_clipboard_monitor = 0
+let g:yankring_manual_clipboard_check = 0
 " }}}
 
 " Python-mode {{{
