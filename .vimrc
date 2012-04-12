@@ -175,6 +175,9 @@ endfunction
 
 " Utilities {{{
 
+" Reload molokai colorscheme
+map <leader>c :colorscheme molokai<cr>
+
 " Disable highlight
 map <leader><space> :noh<cr>
 
