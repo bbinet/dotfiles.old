@@ -31,3 +31,6 @@
 
 [merge]
     tool = vimdiff
+
+[github]
+    user = bbinet
