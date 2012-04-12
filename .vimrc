@@ -266,7 +266,9 @@ function! MyFoldText() " {{{
     let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
+
 set foldtext=MyFoldText()
+set foldlevel=20
 " }}}
 
 " Abbreviations {{{
