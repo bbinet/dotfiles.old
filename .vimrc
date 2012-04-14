@@ -90,9 +90,6 @@ set autoindent
 set ignorecase
 set smartcase
 set gdefault
-" PulseCursorLine
-nnoremap n nzzzv:call PulseCursorLine()<cr>
-nnoremap N Nzzzv:call PulseCursorLine()<cr>
 " }}}
 
 " Text {{{
@@ -118,6 +115,8 @@ nnoremap <F5> :GundoToggle<CR>
 let g:yankring_max_history = 10
 let g:yankring_max_element_length = 512000
 let g:yankring_history_file = '.vim_yankring_history'
+let g:yankring_clipboard_monitor = 0
+let g:yankring_manual_clipboard_check = 0
 " }}}
 
 " Python-mode {{{
@@ -177,6 +176,9 @@ endfunction
 " }}}
 
 " Utilities {{{
+
+" Reload molokai colorscheme
+map <leader>c :colorscheme molokai<cr>
 
 " Disable highlight
 map <leader><space> :noh<cr>
@@ -269,54 +271,9 @@ function! MyFoldText() " {{{
     let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
+
 set foldtext=MyFoldText()
-" }}}
-
-" Pulse {{{
-function! PulseCursorLine()
-    let current_window = winnr()
-
-    windo set nocursorline
-    execute current_window . 'wincmd w'
-
-    setlocal cursorline
-
-    redir => old_hi
-        silent execute 'hi CursorLine'
-    redir END
-    let old_hi = split(old_hi, '\n')[0]
-    let old_hi = substitute(old_hi, 'xxx', '', '')
-
-    hi CursorLine guibg=#2a2a2a ctermbg=233
-    redraw
-    sleep 20m
-
-    hi CursorLine guibg=#333333 ctermbg=235
-    redraw
-    sleep 20m
-
-    hi CursorLine guibg=#3a3a3a ctermbg=237
-    redraw
-    sleep 20m
-
-    hi CursorLine guibg=#444444 ctermbg=239
-    redraw
-    sleep 20m
-
-    hi CursorLine guibg=#4a4a4a ctermbg=237
-    redraw
-    sleep 20m
-
-    hi CursorLine guibg=#555555 ctermbg=235
-    redraw
-    sleep 20m
-
-    execute 'hi ' . old_hi
-
-    windo set cursorline
-    execute current_window . 'wincmd w'
-endfunction
-
+set foldlevel=20
 " }}}
 
 " Abbreviations {{{
