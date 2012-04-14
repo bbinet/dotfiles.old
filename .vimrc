@@ -123,7 +123,7 @@ let g:yankring_history_file = '.vim_yankring_history'
 " Python-mode {{{
 
 " Load pylint code plugin
-let g:pymode_lint = 1
+let g:pymode_lint = 0
 " Switch pylint, pyflakes, pep8, mccabe code-checkers
 " Can have multiply values "pep8,pyflakes,mcccabe"
 let g:pymode_lint_checker = "pylint"
