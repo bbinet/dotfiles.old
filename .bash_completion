@@ -1,1 +1,1 @@
-. .bash_completion.d/hub
+source ~/.bash_completion.d/hub
