@@ -73,8 +73,9 @@ let g:Powerline_symbols = 'unicode' " 'fancy' needs special patched fonts
 
 " VimDiff {{{
 " change color scheme when calling vimdiff inside vim
-au FilterWritePost * if &diff | set t_Co=256 | set bg=dark | colorscheme slate | else | colorscheme molokai | endif
-au BufWinLeave * colorscheme molokai
+" comment out this part since it causes colorscheme issue when closing a buffer
+"au FilterWritePost * if &diff | set t_Co=256 | set bg=dark | colorscheme slate | else | colorscheme molokai | endif
+"au BufWinLeave * colorscheme molokai
 " }}}
 
 " Leader {{{
