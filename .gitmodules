@@ -73,3 +73,6 @@
 [submodule ".vim/bundle/vim-css-color"]
 	path = .vim/bundle/vim-css-color
 	url = https://github.com/ap/vim-css-color.git
+[submodule "virtualenv-burrito"]
+	path = virtualenv-burrito
+	url = https://github.com/brainsik/virtualenv-burrito
