@@ -1,0 +1,17 @@
+#!/bin/bash
+# githg.py wrapper to be able to call it through the 'git hg' command.
+
+VENV_BIN="$HOME/.virtualenvs/global/bin"
+HG="$VENV_BIN/hg"
+
+if [ ! -e $HG ]; then
+    echo "Cannot proceed: $HG file does not exists."
+    exit 1
+fi
+if [ -n $@ ]; then
+    echo "Cannot proceed: you should pass at least one argument to 'git hg'"
+    exit 1
+fi
+
+export PATH=$VENV_BIN:$PATH
+python ~/.dotfiles/git-hg-again/githg.py $@
