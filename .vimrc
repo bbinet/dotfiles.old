@@ -164,6 +164,9 @@ function! QuickfixFilenames()
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 command! -nargs=1 -complete=command -bang Qargdo exe 'args '.QuickfixFilenames() | argdo<bang> <args>
+
+" Add QGgrep command to display the result of Ggrep directly in the quickfix
+command! -nargs=1 -complete=command QGgrep silent exe 'Ggrep! <args>' | redraw!
 " }}}
 
 " Special filetype conf {{{
