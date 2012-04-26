@@ -287,6 +287,7 @@ function git-co-externals() {
 }
 
 export TERM="xterm-256color"
+export PATH=~/.bin:$PATH
 
 if [ -f ~/.venvburrito/startup.sh ]; then
     source ~/.venvburrito/startup.sh
