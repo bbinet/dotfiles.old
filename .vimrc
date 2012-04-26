@@ -152,6 +152,20 @@ inoremap <Tab> <C-R>=MyTabOrComplete()<CR>
 :au QuickFixCmdPost *grep* cwindow
 " }}}
 
+" QuickFix {{{
+" Add a 'Qargdo' command
+" cf. http://stackoverflow.com/questions/5686206/search-replace-using-quickfix-list-in-vim
+function! QuickfixFilenames()
+  " Building a hash ensures we get each buffer only once
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
+command! -nargs=1 -complete=command -bang Qargdo exe 'args '.QuickfixFilenames() | argdo<bang> <args>
+" }}}
+
 " Special filetype conf {{{
 au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 au FileType coffee setlocal ts=2 sts=2 sw=2 expandtab
