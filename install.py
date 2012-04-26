@@ -39,3 +39,8 @@ for f in os.listdir('.'):
             shutil.rmtree(path)
         print 'create link for %s' % (path)
         os.symlink(os.path.abspath(f), path)
+
+# also symlink the dotfiles directory to '~/.dotfiles' if not already exist
+if not os.path.exists(dotfiles_dir):
+    print 'create link for %s' % (dotfiles_dir)
+    os.symlink(os.path.abspath('.'), dotfiles_dir)
