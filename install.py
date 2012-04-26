@@ -3,7 +3,7 @@ import os
 import fnmatch
 import shutil
 
-exclude = ['*.sw*', '*.un~', '.git', '.gitignore', '.gitmodules', 'install.*']
+exclude = ['*.sw*', '*.un~', '.git', '.gitignore', '.gitmodules', '[!.]*']
 home = os.path.expanduser('~')
 
 for f in os.listdir('.'):
