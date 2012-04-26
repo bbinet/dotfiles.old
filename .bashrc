@@ -287,6 +287,11 @@ function git-co-externals() {
 }
 
 export TERM="xterm-256color"
+
+if [ -f ~/.venvburrito/startup.sh ]; then
+    source ~/.venvburrito/startup.sh
+fi
+
 if [ -f ~/.bashrc_after ]; then
     source ~/.bashrc_after
 fi
