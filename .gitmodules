@@ -76,3 +76,6 @@
 [submodule "virtualenv-burrito"]
 	path = virtualenv-burrito
 	url = https://github.com/brainsik/virtualenv-burrito
+[submodule "git-hg-again"]
+	path = git-hg-again
+	url = https://github.com/abourget/git-hg-again.git
