@@ -147,6 +147,8 @@ inoremap <Tab> <C-R>=MyTabOrComplete()<CR>
 " Autocommands {{{
 " Jumps to the last known position in a file , if the '"' mark is set:
 :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+" Open the quickfix window automatically after a grep command
+:au QuickFixCmdPost *grep* cwindow
 " }}}
 
 " Special filetype conf {{{
