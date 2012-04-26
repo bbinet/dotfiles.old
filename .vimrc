@@ -222,7 +222,8 @@ nnoremap <leader>S ?{<CR>jV/}$<CR>k:sort<CR>:noh<CR>
 nnoremap <leader>, <c-w><c-w>
 
 " ack-grep word under cursor
-noremap <leader># "ayiw:Ack <c-r>a<CR>
+let g:ackprg="ack-standalone -H --nocolor --nogroup --column --ignore-dir=buildout --ignore-dir=build"
+noremap <leader>* "ayiw:Ack <c-r>a<CR>
 
 " Tabularize
 noremap <leader>: :Tabularize /:<cr>
