@@ -4,6 +4,10 @@ import fnmatch
 import shutil
 
 home = os.path.expanduser('~')
+vburrito_dir = os.path.join(home, '.venvburrito')
+vburrito = os.path.join(vburrito_dir, 'bin', 'virtualenv-burrito')
+venv_global = os.path.join(home, '.virtualenvs/global')
+dotfiles_dir = os.path.join(home, '.dotfiles')
 exclude = ['*.sw*', '*.un~', '.git', '.gitignore', '.gitmodules', '[!.]*']
 
 def run(cmd):
@@ -11,9 +15,7 @@ def run(cmd):
     print 'running: ' + cmd
     os.system(cmd)
 
-vburrito_dir = os.path.join(home, '.venvburrito')
-vburrito = os.path.join(vburrito_dir, 'bin', 'virtualenv-burrito')
-
+# install virtualenv-burrito
 cmd = vburrito + ' upgrade'
 if not os.path.exists(os.path.join(vburrito_dir)):
     os.makedirs(os.path.join(vburrito_dir, 'lib', 'python'))
@@ -23,13 +25,13 @@ shutil.copyfile('virtualenv-burrito/virtualenv-burrito.py', vburrito)
 os.chmod(vburrito, 0755)
 run(cmd)
 
-venv_global = os.path.join(home, '.virtualenvs/global')
+# install the global venv
 if not os.path.exists(venv_global):
     run('source %s && mkvirtualenv global' % \
             os.path.join(vburrito_dir, 'startup.sh'))
-
 run(os.path.join(venv_global, 'bin', 'pip') + ' install -r requirements.txt')
 
+# symlink all my dotfiles to my home directory
 for f in os.listdir('.'):
     if not any(fnmatch.fnmatch(f, p) for p in exclude):
         path = os.path.join(home, f)
