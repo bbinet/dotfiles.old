@@ -19,7 +19,7 @@ set viminfo=/10,'10,r/mnt/zip,r/mnt/floppy,f0,h,\"100
 set wildmode=list:longest,full
 set wildignore+=*.o,*.obj,.git,.svn,*.pyc
 set hidden
-set switchbuf=usetab,newtab
+set switchbuf=useopen,split
 " }}}
 
 " Tab/spaces {{{
