@@ -183,6 +183,8 @@ command! -nargs=1 -complete=command -bang Qargdo exe 'args '.QuickfixFilenames()
 
 " Add QGgrep command to display the result of Ggrep directly in the quickfix
 command! -nargs=1 -complete=command QGgrep silent exe 'Ggrep! <args>' | redraw!
+" git-grep word under cursor
+noremap <leader>* "cyiw:QGgrep <c-r>c<CR>
 " }}}
 
 " Special filetype conf {{{
@@ -239,7 +241,7 @@ nnoremap <leader>, <c-w><c-w>
 
 " ack-grep word under cursor
 let g:ackprg="ack-standalone -H --nocolor --nogroup --column --ignore-dir=buildout --ignore-dir=build"
-noremap <leader>* "ayiw:Ack <c-r>a<CR>
+noremap <leader>a "cyiw:Ack <c-r>c<CR>
 
 " Tabularize
 noremap <leader>: :Tabularize /:<cr>
