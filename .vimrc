@@ -63,7 +63,6 @@ if has('gui_running')
     set guifont=Menlo:h12
     set go-=m
 endif
-set cursorline
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
@@ -148,6 +147,17 @@ inoremap <Tab> <C-R>=MyTabOrComplete()<CR>
 " Autocommands {{{
 " Jumps to the last known position in a file , if the '"' mark is set:
 :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+" Cursorline {{{
+aug cursorline
+    " Highlight the current line in the current window.
+    au!
+    au BufEnter * set cursorline
+    au BufLeave * set nocursorline
+    au InsertEnter * set nocursorline
+    au InsertLeave * set cursorline
+aug end
+" }}}
 
 " QuickFix {{{
 aug ft_quickfix
