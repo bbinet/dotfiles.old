@@ -27,7 +27,7 @@ run(cmd)
 
 # install the global venv
 if not os.path.exists(venv_global):
-    run('source %s && mkvirtualenv global' % \
+    run('/bin/bash -c "source %s && mkvirtualenv global"' % \
             os.path.join(vburrito_dir, 'startup.sh'))
 run(os.path.join(venv_global, 'bin', 'pip') + ' install -r requirements.txt')
 
