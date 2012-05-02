@@ -19,7 +19,7 @@ set viminfo=/10,'10,r/mnt/zip,r/mnt/floppy,f0,h,\"100
 set wildmode=list:longest,full
 set wildignore+=*.o,*.obj,.git,.svn,*.pyc
 set hidden
-set switchbuf=useopen,split
+set switchbuf=useopen
 " }}}
 
 " Tab/spaces {{{
@@ -163,6 +163,26 @@ aug end
 aug ft_quickfix
     au!
     au Filetype qf setlocal colorcolumn=0 nolist nocursorline nowrap
+    " q         to close the quickfix window
+    " o         to open (same as enter)
+    " go        to preview file (open but maintain focus on ack.vim results)
+    " x or s    to open in horizontal split
+    " gx or gs  to open in horizontal split silently
+    " v         to open in vertical split
+    " gv        to open in vertical split silently
+    " t         to open in new tab
+    " T         to open in new tab silently
+    au Filetype qf nnoremap <silent> <buffer> q :ccl<CR>
+    au Filetype qf nnoremap <silent> <buffer> o <CR>
+    au Filetype qf nnoremap <silent> <buffer> go <CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> x <CR>:sp#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> gx <CR>:sp#<CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> s <CR>:sp#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> gs <CR>:sp#<CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> v <CR>:vs#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> gv <CR>:vs#<CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> t <C-W><CR><C-W>T
+    au Filetype qf nnoremap <silent> <buffer> T <C-W><CR><C-W>TgT<C-W><C-W>
     " Open the quickfix window automatically after a grep command
     au QuickFixCmdPost *grep* cwindow
 aug end
