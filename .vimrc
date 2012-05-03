@@ -19,7 +19,7 @@ set viminfo=/10,'10,r/mnt/zip,r/mnt/floppy,f0,h,\"100
 set wildmode=list:longest,full
 set wildignore+=*.o,*.obj,.git,.svn,*.pyc
 set hidden
-set switchbuf=usetab,newtab
+set switchbuf=useopen
 " }}}
 
 " Tab/spaces {{{
@@ -63,7 +63,6 @@ if has('gui_running')
     set guifont=Menlo:h12
     set go-=m
 endif
-set cursorline
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
@@ -148,8 +147,45 @@ inoremap <Tab> <C-R>=MyTabOrComplete()<CR>
 " Autocommands {{{
 " Jumps to the last known position in a file , if the '"' mark is set:
 :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-" Open the quickfix window automatically after a grep command
-:au QuickFixCmdPost *grep* cwindow
+
+" Cursorline {{{
+aug cursorline
+    " Highlight the current line in the current window.
+    au!
+    au BufEnter * set cursorline
+    au BufLeave * set nocursorline
+    au InsertEnter * set nocursorline
+    au InsertLeave * set cursorline
+aug end
+" }}}
+
+" QuickFix {{{
+aug ft_quickfix
+    au!
+    au Filetype qf setlocal colorcolumn=0 nolist nocursorline nowrap
+    " q         to close the quickfix window
+    " o         to open (same as enter)
+    " go        to preview file (open but maintain focus on ack.vim results)
+    " x or s    to open in horizontal split
+    " gx or gs  to open in horizontal split silently
+    " v         to open in vertical split
+    " gv        to open in vertical split silently
+    " t         to open in new tab
+    " T         to open in new tab silently
+    au Filetype qf nnoremap <silent> <buffer> q :ccl<CR>
+    au Filetype qf nnoremap <silent> <buffer> o <CR>
+    au Filetype qf nnoremap <silent> <buffer> go <CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> x <CR>:sp#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> gx <CR>:sp#<CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> s <CR>:sp#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> gs <CR>:sp#<CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> v <CR>:vs#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> gv <CR>:vs#<CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> t <C-W><CR><C-W>T
+    au Filetype qf nnoremap <silent> <buffer> T <C-W><CR><C-W>TgT<C-W><C-W>
+    " Open the quickfix window automatically after a grep command
+    au QuickFixCmdPost *grep* cwindow
+aug end
 " }}}
 
 " QuickFix {{{
@@ -167,6 +203,8 @@ command! -nargs=1 -complete=command -bang Qargdo exe 'args '.QuickfixFilenames()
 
 " Add QGgrep command to display the result of Ggrep directly in the quickfix
 command! -nargs=1 -complete=command QGgrep silent exe 'Ggrep! <args>' | redraw!
+" git-grep word under cursor
+noremap <leader>* "cyiw:QGgrep <c-r>c<CR>
 " }}}
 
 " Special filetype conf {{{
@@ -223,7 +261,7 @@ nnoremap <leader>, <c-w><c-w>
 
 " ack-grep word under cursor
 let g:ackprg="ack-standalone -H --nocolor --nogroup --column --ignore-dir=buildout --ignore-dir=build"
-noremap <leader>* "ayiw:Ack <c-r>a<CR>
+noremap <leader>a "cyiw:Ack <c-r>c<CR>
 
 " Tabularize
 noremap <leader>: :Tabularize /:<cr>
@@ -263,6 +301,14 @@ map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>t :CtrlP<CR>
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files && git ls-files -o --exclude-standard', 'find %s -type f']
+" Note: In some terminals, it’s not possible to remap <c-h> without also
+" changing <bs> (|key-codes|). So if pressing <bs> moves the cursor to the left
+" instead of deleting a char for you, add this to your |vimrc| to change the
+" default <c-h> mapping:
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtBS()': ['<bs>', '<c-]>', '<c-h>'],
+    \ 'PrtCurLeft()': ['<left>', '<c-^>'],
+    \ }
 " }}}
 
 " Folding {{{
