@@ -204,7 +204,7 @@ command! -nargs=1 -complete=command -bang Qargdo exe 'args '.QuickfixFilenames()
 " Add QGgrep command to display the result of Ggrep directly in the quickfix
 command! -nargs=1 -complete=command QGgrep silent exe 'Ggrep! <args>' | redraw!
 " git-grep word under cursor
-noremap <leader>* "cyiw:QGgrep <c-r>c<CR>
+noremap <leader>* "cyiw:QGgrep "\<<c-r>c\>"<CR>
 " }}}
 
 " Special filetype conf {{{
