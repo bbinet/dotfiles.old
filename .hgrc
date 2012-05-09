@@ -1,3 +1,10 @@
 [extensions]
 hgext.bookmarks =
 hggit =
+
+[bookmarks]
+track.current = True
+
+[ui]
+editor = vim
+username = Bruno Binet <bruno.binet@gmail.com>
