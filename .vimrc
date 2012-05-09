@@ -148,6 +148,13 @@ inoremap <Tab> <C-R>=MyTabOrComplete()<CR>
 " Jumps to the last known position in a file , if the '"' mark is set:
 :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
+" Python {{{
+aug python
+    au Filetype python inoremap <silent> <buffer> <F7> import pdb; pdb.set_trace()
+    au Filetype python noremap <silent> <buffer> <F7> Oimport pdb; pdb.set_trace()<ESC>j
+aug end
+" }}}
+
 " Cursorline {{{
 aug cursorline
     " Highlight the current line in the current window.
