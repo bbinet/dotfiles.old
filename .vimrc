@@ -47,8 +47,12 @@ set guioptions-=T
 set guioptions-=r
 syntax on
 set bg=dark
-if v:version >= 703
+if exists('+relativenumber')
     set relativenumber
+else
+    set number
+endif
+if exists('+cc')
     set cc=80
 endif
 set listchars=tab:▸\ ,eol:¬,trail:·
@@ -105,7 +109,14 @@ set scrolloff=3
 nnoremap <F2> :set invpaste paste?<CR>
 imap <F2> <C-O><F2>
 set pastetoggle=<F2>
-nnoremap <F3> :execute 'set ' . (&relativenumber ? 'number' : 'relativenumber') <CR>
+function! ToggleNumber()
+    if exists('+relativenumber')
+        set relativenumber!
+    else
+        set number!
+    endif
+endfunction
+nnoremap <F3> :call ToggleNumber()<CR>
 nnoremap <silent> <F4> :YRShow<cr>
 inoremap <silent> <F4> <ESC>:YRShow<cr>
 nnoremap <F5> :GundoToggle<CR>
