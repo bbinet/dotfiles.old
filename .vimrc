@@ -193,12 +193,16 @@ aug ft_quickfix
     " T         to open in new tab silently
     au Filetype qf nnoremap <silent> <buffer> q :ccl<CR>
     au Filetype qf nnoremap <silent> <buffer> o <CR>
+    au Filetype qf nnoremap <silent> <buffer> O <CR>:cclose<CR>
     au Filetype qf nnoremap <silent> <buffer> go <CR>:cope<CR>
     au Filetype qf nnoremap <silent> <buffer> x <CR>:sp#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> X <CR>:sp#<CR><C-W><C-W>:cclose<CR>
     au Filetype qf nnoremap <silent> <buffer> gx <CR>:sp#<CR>:cope<CR>
     au Filetype qf nnoremap <silent> <buffer> s <CR>:sp#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> S <CR>:sp#<CR><C-W><C-W>:cclose<CR>
     au Filetype qf nnoremap <silent> <buffer> gs <CR>:sp#<CR>:cope<CR>
     au Filetype qf nnoremap <silent> <buffer> v <CR>:vs#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> V <CR>:vs#<CR><C-W><C-W>:cclose<CR>
     au Filetype qf nnoremap <silent> <buffer> gv <CR>:vs#<CR>:cope<CR>
     au Filetype qf nnoremap <silent> <buffer> t <C-W><CR><C-W>T
     au Filetype qf nnoremap <silent> <buffer> T <C-W><CR><C-W>TgT<C-W><C-W>
