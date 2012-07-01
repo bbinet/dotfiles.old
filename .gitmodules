@@ -67,9 +67,6 @@
 [submodule ".vim/bundle/webapi-vim"]
 	path = .vim/bundle/webapi-vim
 	url = https://github.com/mattn/webapi-vim
-[submodule ".vim/bundle/vim-smartinput"]
-	path = .vim/bundle/vim-smartinput
-	url = https://github.com/kana/vim-smartinput.git
 [submodule ".vim/bundle/vim-css-color"]
 	path = .vim/bundle/vim-css-color
 	url = https://github.com/ap/vim-css-color.git
@@ -85,3 +82,6 @@
 [submodule ".vim/bundle/matchit"]
 	path = .vim/bundle/matchit
 	url = git://github.com/vim-scripts/matchit.zip.git
+[submodule ".vim/bundle/vim-bundle-mako"]
+	path = .vim/bundle/vim-bundle-mako
+	url = git://github.com/sophacles/vim-bundle-mako.git

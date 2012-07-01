@@ -47,8 +47,12 @@ set guioptions-=T
 set guioptions-=r
 syntax on
 set bg=dark
-if v:version >= 703
+if exists('+relativenumber')
     set relativenumber
+else
+    set number
+endif
+if exists('+cc')
     set cc=80
 endif
 set listchars=tab:▸\ ,eol:¬,trail:·
@@ -105,7 +109,14 @@ set scrolloff=3
 nnoremap <F2> :set invpaste paste?<CR>
 imap <F2> <C-O><F2>
 set pastetoggle=<F2>
-nnoremap <F3> :execute 'set ' . (&relativenumber ? 'number' : 'relativenumber') <CR>
+function! ToggleNumber()
+    if exists('+relativenumber')
+        set relativenumber!
+    else
+        set number!
+    endif
+endfunction
+nnoremap <F3> :call ToggleNumber()<CR>
 nnoremap <silent> <F4> :YRShow<cr>
 inoremap <silent> <F4> <ESC>:YRShow<cr>
 nnoremap <F5> :GundoToggle<CR>
@@ -308,7 +319,9 @@ map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>t :CtrlP<CR>
+map <leader>p :CtrlPBuffer<CR>
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files && git ls-files -o --exclude-standard', 'find %s -type f']
+let g:ctrlp_mruf_exclude = '/tmp/.*\|.*\.git/.*'
 " Note: In some terminals, it’s not possible to remap <c-h> without also
 " changing <bs> (|key-codes|). So if pressing <bs> moves the cursor to the left
 " instead of deleting a char for you, add this to your |vimrc| to change the
