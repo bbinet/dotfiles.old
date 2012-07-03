@@ -179,39 +179,6 @@ aug end
 " }}}
 
 " QuickFix {{{
-aug ft_quickfix
-    au!
-    au Filetype qf setlocal colorcolumn=0 nolist nocursorline nowrap
-    " q         to close the quickfix window
-    " o         to open (same as enter)
-    " go        to preview file (open but maintain focus on ack.vim results)
-    " x or s    to open in horizontal split
-    " gx or gs  to open in horizontal split silently
-    " v         to open in vertical split
-    " gv        to open in vertical split silently
-    " t         to open in new tab
-    " T         to open in new tab silently
-    au Filetype qf nnoremap <silent> <buffer> q :ccl<CR>
-    au Filetype qf nnoremap <silent> <buffer> o <CR>
-    au Filetype qf nnoremap <silent> <buffer> O <CR>:cclose<CR>
-    au Filetype qf nnoremap <silent> <buffer> go <CR>:cope<CR>
-    au Filetype qf nnoremap <silent> <buffer> x <CR>:sp#<CR><C-W><C-W>
-    au Filetype qf nnoremap <silent> <buffer> X <CR>:sp#<CR><C-W><C-W>:cclose<CR>
-    au Filetype qf nnoremap <silent> <buffer> gx <CR>:sp#<CR>:cope<CR>
-    au Filetype qf nnoremap <silent> <buffer> s <CR>:sp#<CR><C-W><C-W>
-    au Filetype qf nnoremap <silent> <buffer> S <CR>:sp#<CR><C-W><C-W>:cclose<CR>
-    au Filetype qf nnoremap <silent> <buffer> gs <CR>:sp#<CR>:cope<CR>
-    au Filetype qf nnoremap <silent> <buffer> v <CR>:vs#<CR><C-W><C-W>
-    au Filetype qf nnoremap <silent> <buffer> V <CR>:vs#<CR><C-W><C-W>:cclose<CR>
-    au Filetype qf nnoremap <silent> <buffer> gv <CR>:vs#<CR>:cope<CR>
-    au Filetype qf nnoremap <silent> <buffer> t <C-W><CR><C-W>T
-    au Filetype qf nnoremap <silent> <buffer> T <C-W><CR><C-W>TgT<C-W><C-W>
-    " Open the quickfix window automatically after a grep command
-    au QuickFixCmdPost *grep* cwindow
-aug end
-" }}}
-
-" QuickFix {{{
 " Add a 'Qargdo' command
 " cf. http://stackoverflow.com/questions/5686206/search-replace-using-quickfix-list-in-vim
 function! QuickfixFilenames()
@@ -228,6 +195,80 @@ command! -nargs=1 -complete=command -bang Qargdo exe 'args '.QuickfixFilenames()
 command! -nargs=1 -complete=command QGgrep silent exe 'Ggrep! <args>' | redraw! | cope
 " git-grep word under cursor
 noremap <leader>* "cyiw:QGgrep "\<<c-r>c\>"<CR>
+" open the quickfix
+noremap <leader>q :cope<CR>
+" close the quickfix
+noremap <leader>Q :cclose<CR>
+
+" Filter Quickfix list
+function! FilterQFList(type, action, pattern)
+    if a:pattern == ''
+        return ''
+    endif
+    let s:curList = getqflist()
+    let s:newList = []
+    for item in s:curList
+        if a:type == 'f'     " filter on file names
+            let s:cmpPat = bufname(item.bufnr)
+        elseif a:type == 'p' " filter on line content (pattern)
+            let s:cmpPat = item.text . item.pattern
+        endif
+        if item.valid
+            if a:action == '-'
+                " Delete matching lines
+                if s:cmpPat !~ a:pattern
+                    let s:newList += [item]
+                endif
+            elseif a:action == '+'
+                " Keep matching lines
+                if s:cmpPat =~ a:pattern
+                    let s:newList += [item]
+                endif
+            endif
+        endif
+    endfor
+    " Assing as new quickfix list
+    call setqflist(s:newList)
+endfunction
+
+aug ft_quickfix
+    au!
+    au Filetype qf setlocal colorcolumn=0 nolist nocursorline nowrap
+    " q         to close the quickfix window
+    " o         to open (same as enter)
+    " go        to preview file (open but maintain focus on ack.vim results)
+    " x or s    to open in horizontal split
+    " gx or gs  to open in horizontal split silently
+    " v         to open in vertical split
+    " gv        to open in vertical split silently
+    " t         to open in new tab
+    " T         to open in new tab silently
+    au Filetype qf nnoremap <silent> <buffer> q :cclose<CR>
+    au Filetype qf nnoremap <silent> <buffer> o <CR>
+    au Filetype qf nnoremap <silent> <buffer> O <CR>:cclose<CR>
+    au Filetype qf nnoremap <silent> <buffer> go <CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> x <CR>:sp#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> X <CR>:sp#<CR><C-W><C-W>:cclose<CR>
+    au Filetype qf nnoremap <silent> <buffer> gx <CR>:sp#<CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> s <CR>:sp#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> S <CR>:sp#<CR><C-W><C-W>:cclose<CR>
+    au Filetype qf nnoremap <silent> <buffer> gs <CR>:sp#<CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> v <CR>:vs#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> V <CR>:vs#<CR><C-W><C-W>:cclose<CR>
+    au Filetype qf nnoremap <silent> <buffer> gv <CR>:vs#<CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> t <C-W><CR><C-W>T
+    au Filetype qf nnoremap <silent> <buffer> T <C-W><CR><C-W>TgT<C-W><C-W>
+    " and some shortcuts to filter out qfix lines:
+    " f and F will filter on file names, c and C on line contents
+    " (capitalized versions have a :v effect (keep lines not matching), normal
+    " versions keep lines matching your pattern)
+    au Filetype qf nnoremap <silent> <buffer> F :call FilterQFList('f', '-', inputdialog('Delete from quickfix files matching: ', ''))<CR>
+    au Filetype qf nnoremap <silent> <buffer> f :call FilterQFList('f', '+', inputdialog('Keep only quickfix files matching: ', ''))<CR>
+    au Filetype qf nnoremap <silent> <buffer> C :call FilterQFList('p', '-', inputdialog('Delete from quickfix content matching: ', ''))<CR>
+    au Filetype qf nnoremap <silent> <buffer> c :call FilterQFList('p', '+', inputdialog('Keep only quickfix content matching: ', ''))<CR>
+    " Open the quickfix window automatically after a grep command
+    au QuickFixCmdPost *grep* cwindow
+aug end
 " }}}
 
 " Special filetype conf {{{
