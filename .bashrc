@@ -239,7 +239,6 @@ alias svnd='svn diff --diff-cmd colordiff'
 
 alias ack='~/.bin/ack-standalone'
 alias hub='~/.bin/hub-standalone'
-alias git=hub
 
 # cd to git root dir
 alias gitroot='cd $(git rev-parse --show-toplevel)'
