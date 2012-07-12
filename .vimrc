@@ -73,6 +73,18 @@ set encoding=utf-8 " Necessary to show unicode glyphs
 let g:Powerline_symbols = 'fancy' " 'fancy' needs special patched fonts
 " }}}
 
+" Movements {{{
+" Use the damn hjkl keys, never use the arrow keys ! Never ever !
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+" }}}
+
 " VimDiff {{{
 " change color scheme when calling vimdiff inside vim
 " comment out this part since it causes colorscheme issue when closing a buffer
