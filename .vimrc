@@ -10,7 +10,6 @@ filetype plugin indent on
 " Globals {{{
 set nocompatible
 set modelines=0
-set mouse=a
 set autoread
 " make mouse to work with gnu screen
 set ttymouse=xterm2
