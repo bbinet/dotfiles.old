@@ -71,7 +71,7 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set encoding=utf-8 " Necessary to show unicode glyphs
-let g:Powerline_symbols = 'unicode' " 'fancy' needs special patched fonts
+let g:Powerline_symbols = 'fancy' " 'fancy' needs special patched fonts
 " }}}
 
 " VimDiff {{{
