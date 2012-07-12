@@ -11,3 +11,4 @@ hardstatus alwayslastline
 hardstatus string '%{gk}[%{G}%H%{g}][%= %{wk}%?%-Lw%?%{=b kR} (%{W}%n*%f%t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}][%{=b}%{C}%m/%d %c%{= g}]%{W}'
 #shell -$SHELL
 altscreen on
+setenv SSH_AUTH_SOCK "/tmp/ssh-agent-$USER-screen"
