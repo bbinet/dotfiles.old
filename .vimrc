@@ -83,6 +83,8 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+" EasyMotion
+let g:EasyMotion_leader_key = '<Leader>'
 " }}}
 
 " VimDiff {{{
@@ -374,8 +376,8 @@ map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>t :CtrlP<CR>
-map <leader>p :CtrlPBuffer<CR>
+map <leader>p :CtrlP<CR>
+map <leader>P :CtrlPBuffer<CR>
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files && git ls-files -o --exclude-standard', 'find %s -type f']
 let g:ctrlp_mruf_exclude = '/tmp/.*\|.*\.git/.*'
 " Note: In some terminals, it’s not possible to remap <c-h> without also
