@@ -346,7 +346,7 @@ noremap <leader>= :Tabularize /=<cr>
 noremap <leader>o vi{:Tabularize /:<cr>
 
 " Select previous selection
-nmap gV `[v`[
+nnoremap <expr> gV '`[' . getregtype()[0] . '`]'
 
 " Surround shortcut
 nmap <leader>é ysiw
