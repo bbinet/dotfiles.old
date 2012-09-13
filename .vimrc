@@ -31,12 +31,12 @@ set expandtab
 " Backups {{{
 if v:version >= 703
     set undofile
-    set undodir=./.tmp,/tmp
+    set undodir=~/.tmp/vim/undodir//,/tmp//
 else
     let g:gundo_disable = 1
 endif
-set backupdir=./.tmp,.,/tmp
-set directory=./.tmp,/tmp
+set backupdir=~/.tmp/vim/backupdir//,/tmp//
+set directory=~/.tmp/vim/directory//,/tmp//
 set history=500
 set undolevels=500
 " }}}
