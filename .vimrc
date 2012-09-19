@@ -145,6 +145,8 @@ let g:yankring_manual_clipboard_check = 0
 
 " Tagbar {{{
 nmap <F8> :TagbarToggle<CR>
+let g:tagbar_foldlevel = 1
+let g:tagbar_left = 1
 " }}}
 
 " Python-mode {{{
