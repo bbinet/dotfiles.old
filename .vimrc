@@ -143,6 +143,10 @@ let g:yankring_clipboard_monitor = 0
 let g:yankring_manual_clipboard_check = 0
 " }}}
 
+" Tagbar {{{
+nmap <F8> :TagbarToggle<CR>
+" }}}
+
 " Python-mode {{{
 
 " Load pylint code plugin
