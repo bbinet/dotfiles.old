@@ -84,7 +84,7 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 " EasyMotion
-let g:EasyMotion_leader_key = '<Leader>'
+let g:EasyMotion_leader_key = '<space>'
 " }}}
 
 " VimDiff {{{
