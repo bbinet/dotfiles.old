@@ -10,7 +10,6 @@ filetype plugin indent on
 " Globals {{{
 set nocompatible
 set modelines=0
-set mouse=a
 set autoread
 " make mouse to work with gnu screen
 set ttymouse=xterm2
@@ -32,12 +31,12 @@ set expandtab
 " Backups {{{
 if v:version >= 703
     set undofile
-    set undodir=./.tmp,/tmp
+    set undodir=~/.tmp/vim/undodir//,/tmp//
 else
     let g:gundo_disable = 1
 endif
-set backupdir=./.tmp,.,/tmp
-set directory=./.tmp,/tmp
+set backupdir=~/.tmp/vim/backupdir//,/tmp//
+set directory=~/.tmp/vim/directory//,/tmp//
 set history=500
 set undolevels=500
 " }}}
@@ -71,7 +70,21 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set encoding=utf-8 " Necessary to show unicode glyphs
-let g:Powerline_symbols = 'unicode' " 'fancy' needs special patched fonts
+let g:Powerline_symbols = 'fancy' " 'fancy' needs special patched fonts
+" }}}
+
+" Movements {{{
+" Use the damn hjkl keys, never use the arrow keys ! Never ever !
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+" EasyMotion
+let g:EasyMotion_leader_key = '<space>'
 " }}}
 
 " VimDiff {{{
@@ -130,6 +143,12 @@ let g:yankring_clipboard_monitor = 0
 let g:yankring_manual_clipboard_check = 0
 " }}}
 
+" Tagbar {{{
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_foldlevel = 1
+let g:tagbar_left = 1
+" }}}
+
 " Python-mode {{{
 
 " Load pylint code plugin
@@ -179,39 +198,6 @@ aug end
 " }}}
 
 " QuickFix {{{
-aug ft_quickfix
-    au!
-    au Filetype qf setlocal colorcolumn=0 nolist nocursorline nowrap
-    " q         to close the quickfix window
-    " o         to open (same as enter)
-    " go        to preview file (open but maintain focus on ack.vim results)
-    " x or s    to open in horizontal split
-    " gx or gs  to open in horizontal split silently
-    " v         to open in vertical split
-    " gv        to open in vertical split silently
-    " t         to open in new tab
-    " T         to open in new tab silently
-    au Filetype qf nnoremap <silent> <buffer> q :ccl<CR>
-    au Filetype qf nnoremap <silent> <buffer> o <CR>
-    au Filetype qf nnoremap <silent> <buffer> O <CR>:cclose<CR>
-    au Filetype qf nnoremap <silent> <buffer> go <CR>:cope<CR>
-    au Filetype qf nnoremap <silent> <buffer> x <CR>:sp#<CR><C-W><C-W>
-    au Filetype qf nnoremap <silent> <buffer> X <CR>:sp#<CR><C-W><C-W>:cclose<CR>
-    au Filetype qf nnoremap <silent> <buffer> gx <CR>:sp#<CR>:cope<CR>
-    au Filetype qf nnoremap <silent> <buffer> s <CR>:sp#<CR><C-W><C-W>
-    au Filetype qf nnoremap <silent> <buffer> S <CR>:sp#<CR><C-W><C-W>:cclose<CR>
-    au Filetype qf nnoremap <silent> <buffer> gs <CR>:sp#<CR>:cope<CR>
-    au Filetype qf nnoremap <silent> <buffer> v <CR>:vs#<CR><C-W><C-W>
-    au Filetype qf nnoremap <silent> <buffer> V <CR>:vs#<CR><C-W><C-W>:cclose<CR>
-    au Filetype qf nnoremap <silent> <buffer> gv <CR>:vs#<CR>:cope<CR>
-    au Filetype qf nnoremap <silent> <buffer> t <C-W><CR><C-W>T
-    au Filetype qf nnoremap <silent> <buffer> T <C-W><CR><C-W>TgT<C-W><C-W>
-    " Open the quickfix window automatically after a grep command
-    au QuickFixCmdPost *grep* cwindow
-aug end
-" }}}
-
-" QuickFix {{{
 " Add a 'Qargdo' command
 " cf. http://stackoverflow.com/questions/5686206/search-replace-using-quickfix-list-in-vim
 function! QuickfixFilenames()
@@ -228,6 +214,80 @@ command! -nargs=1 -complete=command -bang Qargdo exe 'args '.QuickfixFilenames()
 command! -nargs=1 -complete=command QGgrep silent exe 'Ggrep! <args>' | redraw! | cope
 " git-grep word under cursor
 noremap <leader>* "cyiw:QGgrep "\<<c-r>c\>"<CR>
+" open the quickfix
+noremap <leader>q :cope<CR>
+" close the quickfix
+noremap <leader>Q :cclose<CR>
+
+" Filter Quickfix list
+function! FilterQFList(type, action, pattern)
+    if a:pattern == ''
+        return ''
+    endif
+    let s:curList = getqflist()
+    let s:newList = []
+    for item in s:curList
+        if a:type == 'f'     " filter on file names
+            let s:cmpPat = bufname(item.bufnr)
+        elseif a:type == 'p' " filter on line content (pattern)
+            let s:cmpPat = item.text . item.pattern
+        endif
+        if item.valid
+            if a:action == '-'
+                " Delete matching lines
+                if s:cmpPat !~ a:pattern
+                    let s:newList += [item]
+                endif
+            elseif a:action == '+'
+                " Keep matching lines
+                if s:cmpPat =~ a:pattern
+                    let s:newList += [item]
+                endif
+            endif
+        endif
+    endfor
+    " Assing as new quickfix list
+    call setqflist(s:newList)
+endfunction
+
+aug ft_quickfix
+    au!
+    au Filetype qf setlocal colorcolumn=0 nolist nocursorline nowrap
+    " q         to close the quickfix window
+    " o         to open (same as enter)
+    " go        to preview file (open but maintain focus on ack.vim results)
+    " x or s    to open in horizontal split
+    " gx or gs  to open in horizontal split silently
+    " v         to open in vertical split
+    " gv        to open in vertical split silently
+    " t         to open in new tab
+    " T         to open in new tab silently
+    au Filetype qf nnoremap <silent> <buffer> q :cclose<CR>
+    au Filetype qf nnoremap <silent> <buffer> o <CR>
+    au Filetype qf nnoremap <silent> <buffer> O <CR>:cclose<CR>
+    au Filetype qf nnoremap <silent> <buffer> go <CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> x <CR>:sp#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> X <CR>:sp#<CR><C-W><C-W>:cclose<CR>
+    au Filetype qf nnoremap <silent> <buffer> gx <CR>:sp#<CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> s <CR>:sp#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> S <CR>:sp#<CR><C-W><C-W>:cclose<CR>
+    au Filetype qf nnoremap <silent> <buffer> gs <CR>:sp#<CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> v <CR>:vs#<CR><C-W><C-W>
+    au Filetype qf nnoremap <silent> <buffer> V <CR>:vs#<CR><C-W><C-W>:cclose<CR>
+    au Filetype qf nnoremap <silent> <buffer> gv <CR>:vs#<CR>:cope<CR>
+    au Filetype qf nnoremap <silent> <buffer> t <C-W><CR><C-W>T
+    au Filetype qf nnoremap <silent> <buffer> T <C-W><CR><C-W>TgT<C-W><C-W>
+    " and some shortcuts to filter out qfix lines:
+    " f and F will filter on file names, c and C on line contents
+    " (capitalized versions have a :v effect (keep lines not matching), normal
+    " versions keep lines matching your pattern)
+    au Filetype qf nnoremap <silent> <buffer> F :call FilterQFList('f', '-', inputdialog('Delete from quickfix files matching: ', ''))<CR>
+    au Filetype qf nnoremap <silent> <buffer> f :call FilterQFList('f', '+', inputdialog('Keep only quickfix files matching: ', ''))<CR>
+    au Filetype qf nnoremap <silent> <buffer> C :call FilterQFList('p', '-', inputdialog('Delete from quickfix content matching: ', ''))<CR>
+    au Filetype qf nnoremap <silent> <buffer> c :call FilterQFList('p', '+', inputdialog('Keep only quickfix content matching: ', ''))<CR>
+    " Open the quickfix window automatically after a grep command
+    au QuickFixCmdPost *grep* cwindow
+aug end
 " }}}
 
 " Special filetype conf {{{
@@ -292,7 +352,7 @@ noremap <leader>= :Tabularize /=<cr>
 noremap <leader>o vi{:Tabularize /:<cr>
 
 " Select previous selection
-nmap gV `[v`[
+nnoremap <expr> gV '`[' . getregtype()[0] . '`]'
 
 " Surround shortcut
 nmap <leader>é ysiw
@@ -318,12 +378,9 @@ vmap gb :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR
 " }}}
 
 " Fast file opening {{{
-map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>t :CtrlP<CR>
-map <leader>p :CtrlPBuffer<CR>
+map <leader>p :CtrlP<CR>
+map <leader>P :CtrlPBuffer<CR>
+map <leader>e :CtrlPCurFile<CR>
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files && git ls-files -o --exclude-standard', 'find %s -type f']
 let g:ctrlp_mruf_exclude = '/tmp/.*\|.*\.git/.*'
 " Note: In some terminals, it’s not possible to remap <c-h> without also

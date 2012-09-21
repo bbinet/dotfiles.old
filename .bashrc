@@ -16,6 +16,13 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# ensure $SSH_AUTH_SOCK is available at /tmp/ssh-agent-$USER-screen
+if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != "/tmp/ssh-agent-$USER-screen" ]
+then
+    rm -f /tmp/ssh-agent-$USER-screen
+    ln -sf "$SSH_AUTH_SOCK" "/tmp/ssh-agent-$USER-screen"
+fi
+
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
@@ -239,7 +246,6 @@ alias svnd='svn diff --diff-cmd colordiff'
 
 alias ack='~/.bin/ack-standalone'
 alias hub='~/.bin/hub-standalone'
-alias git=hub
 
 # cd to git root dir
 alias gitroot='cd $(git rev-parse --show-toplevel)'
@@ -287,7 +293,7 @@ function git-co-externals() {
 }
 
 export TERM="xterm-256color"
-export PATH=~/.bin:$PATH
+export PATH=~/.bin:$PATH:~/.virtualenvs/syntax-checkers/bin
 
 if [ -f ~/.venvburrito/startup.sh ]; then
     source ~/.venvburrito/startup.sh

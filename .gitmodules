@@ -13,9 +13,6 @@
 [submodule ".vim/bundle/repeat"]
     path = .vim/bundle/repeat
     url = https://github.com/tpope/vim-repeat.git
-[submodule ".vim/bundle/bufexplorer"]
-    path = .vim/bundle/bufexplorer
-    url = http://github.com/markabe/bufexplorer.git
 [submodule ".vim/bundle/unimpaired"]
     path = .vim/bundle/unimpaired
     url = http://github.com/tpope/vim-unimpaired.git
@@ -43,9 +40,6 @@
 [submodule ".vim/bundle/vim-commentary"]
 	path = .vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule ".vim/bundle/vim-jade"]
-	path = .vim/bundle/vim-jade
-	url = https://github.com/digitaltoad/vim-jade.git
 [submodule ".vim/bundle/argtextobj.vim"]
 	path = .vim/bundle/argtextobj.vim
 	url = https://github.com/vim-scripts/argtextobj.vim.git
@@ -79,9 +73,21 @@
 [submodule ".vim/bundle/vim-markdown"]
 	path = .vim/bundle/vim-markdown
 	url = https://github.com/tpope/vim-markdown.git
-[submodule ".vim/bundle/matchit"]
-	path = .vim/bundle/matchit
-	url = git://github.com/vim-scripts/matchit.zip.git
 [submodule ".vim/bundle/vim-bundle-mako"]
 	path = .vim/bundle/vim-bundle-mako
 	url = git://github.com/sophacles/vim-bundle-mako.git
+[submodule ".fonts/ttf-dejavu-powerline"]
+	path = .fonts/ttf-dejavu-powerline
+	url = git@gist.github.com:3098433.git
+[submodule ".vim/bundle/vim-easymotion"]
+	path = .vim/bundle/vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
+[submodule ".vim/bundle/matchit"]
+	path = .vim/bundle/matchit
+	url = git://github.com/tmhedberg/matchit.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule ".vim/bundle/tagbar"]
+	path = .vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
