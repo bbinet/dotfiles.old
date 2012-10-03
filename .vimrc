@@ -31,12 +31,12 @@ set expandtab
 " Backups {{{
 if v:version >= 703
     set undofile
-    set undodir=./.tmp,/tmp
+    set undodir=~/.tmp/vim/undodir//,/tmp//
 else
     let g:gundo_disable = 1
 endif
-set backupdir=./.tmp,.,/tmp
-set directory=./.tmp,/tmp
+set backupdir=~/.tmp/vim/backupdir//,/tmp//
+set directory=~/.tmp/vim/directory//,/tmp//
 set history=500
 set undolevels=500
 " }}}
@@ -84,7 +84,7 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 " EasyMotion
-let g:EasyMotion_leader_key = '<Leader>'
+let g:EasyMotion_leader_key = '<space>'
 " }}}
 
 " VimDiff {{{
@@ -141,6 +141,12 @@ let g:yankring_max_element_length = 512000
 let g:yankring_history_file = '.vim_yankring_history'
 let g:yankring_clipboard_monitor = 0
 let g:yankring_manual_clipboard_check = 0
+" }}}
+
+" Tagbar {{{
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_foldlevel = 1
+let g:tagbar_left = 1
 " }}}
 
 " Python-mode {{{
@@ -372,12 +378,9 @@ vmap gb :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR
 " }}}
 
 " Fast file opening {{{
-map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>es :sp <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
-map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>p :CtrlP<CR>
 map <leader>P :CtrlPBuffer<CR>
+map <leader>e :CtrlPCurFile<CR>
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files && git ls-files -o --exclude-standard', 'find %s -type f']
 let g:ctrlp_mruf_exclude = '/tmp/.*\|.*\.git/.*'
 " Note: In some terminals, it’s not possible to remap <c-h> without also
