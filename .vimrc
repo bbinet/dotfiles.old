@@ -354,14 +354,14 @@ noremap <leader>o vi{:Tabularize /:<cr>
 " Select previous selection
 nnoremap <expr> gV '`[' . getregtype()[0] . '`]'
 
-" Surround shortcut
-nmap <leader>é ysiw
-
 " Sudo save
 cmap w!! w !sudo tee % >/dev/null
 
 " From tab to vsplit
 nnoremap <c-w>V mAZZ<c-w>v`A
+
+" Gstatus shortcut
+noremap <leader>g :Gstatus<cr>
 
 " }}}
 
