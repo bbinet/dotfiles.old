@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import sys
 import fnmatch
 import shutil
 
@@ -39,6 +40,18 @@ if not os.path.exists(venv_syntax_checkers):
             os.path.join(vburrito_dir, 'startup.sh'))
 run(os.path.join(venv_syntax_checkers, 'bin', 'pip') + ' install -r '
         'syntax-checkers.txt')
+
+# install phantomjs (platform dependant)
+if not os.path.exists('.bin/phantomjs'):
+    arch = 'linux-x86_64' if sys.maxsize > 2 ** 32 else 'linux-i686'
+    version = '1.7.0'
+    ext = '.tar.bz2'
+    phjs_dir = 'phantomjs-%s-%s' % (version, arch)
+    phjs_archive = phjs_dir + ext
+    phjs_url = 'http://phantomjs.googlecode.com/files/' + phjs_archive
+    run('wget -c -P /tmp ' + phjs_url)
+    run('tar jxvf /tmp/%s -C /tmp %s/bin/phantomjs' % (phjs_archive, phjs_dir))
+    run('mv /tmp/%s/bin/phantomjs .bin/' % phjs_dir)
 
 # symlink all my dotfiles to my home directory
 for f in os.listdir('.'):
