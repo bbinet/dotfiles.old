@@ -68,3 +68,6 @@ for f in os.listdir('.'):
 if not os.path.exists(dotfiles_dir):
     print 'create link for %s' % (dotfiles_dir)
     os.symlink(os.path.abspath('.'), dotfiles_dir)
+
+# update vim help
+run('vim +Helptags +q')
