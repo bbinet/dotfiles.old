@@ -1,3 +1,7 @@
 #!/bin/sh
 rm -f .git/tags
 git ls-files | xargs -d\\n ctags --tag-relative -f .git/tags --languages=-javascript,sql --python-kinds=-i
+
+# ctags for a js project with gjsctags:
+# https://github.com/AnyChart/gjstags
+# git ls-files | grep "\.js$" | xargs -d\\n gjstags -f .git/tags && sed -i "s/\t/&..\//" .git/tags
