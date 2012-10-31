@@ -335,6 +335,7 @@ nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 
 " Indent whole file
 nmap _= :call Preserve("normal gg=G")<CR>
+nmap _t :call Preserve("%!tidy -i -xml -q")<CR>
 
 " Order CSS properties
 nnoremap <leader>S ?{<CR>jV/}$<CR>k:sort<CR>:noh<CR>
