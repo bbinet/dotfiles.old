@@ -341,6 +341,9 @@ nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 " Indent whole file
 nmap _= :call Preserve("normal gg=G")<CR>
 nmap _t :call Preserve("%!tidy -i -xml -q")<CR>
+" Split/Join block
+nmap _j :SplitjoinJoin<CR>
+nmap _s :SplitjoinSplit<CR>
 
 " Order CSS properties
 nnoremap <leader>S ?{<CR>jV/}$<CR>k:sort<CR>:noh<CR>
