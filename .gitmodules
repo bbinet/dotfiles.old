@@ -91,3 +91,6 @@
 [submodule ".vim/bundle/tagbar"]
 	path = .vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
+[submodule ".vim/bundle/splitjoin.vim"]
+	path = .vim/bundle/splitjoin.vim
+	url = git://github.com/AndrewRadev/splitjoin.vim.git
