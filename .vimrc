@@ -141,6 +141,10 @@ let g:yankring_max_element_length = 512000
 let g:yankring_history_file = '.vim_yankring_history'
 let g:yankring_clipboard_monitor = 0
 let g:yankring_manual_clipboard_check = 0
+function! YRRunAfterMaps()
+    " fix 'nnoremap Y y$<CR>' remapping
+    nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+endfunction
 " }}}
 
 " Tagbar {{{
@@ -328,7 +332,8 @@ map <leader><space> :noh<cr>
 nmap <leader>l :set list!<CR>
 
 " remap Y to follow same principle as C, D
-noremap Y y$
+" this used to fail due to YankRing plugin: see fix in YankRing config above
+nnoremap Y y$
 
 " Remove trailing spaces
 nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
