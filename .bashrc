@@ -299,6 +299,14 @@ if [ -f ~/.venvburrito/startup.sh ]; then
     source ~/.venvburrito/startup.sh
 fi
 
+before_bash_exit () {
+    if ! [ -z "$VIRTUAL_ENV" ]
+    then
+        deactivate
+    fi
+}
+trap before_bash_exit EXIT
+
 if [ -f ~/.bashrc_after ]; then
     source ~/.bashrc_after
 fi
