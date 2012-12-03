@@ -153,6 +153,11 @@ let g:tagbar_foldlevel = 1
 let g:tagbar_left = 1
 " }}}
 
+" Syntastic {{{
+" disable signs
+let g:syntastic_enable_signs=0
+" }}} 
+
 " Insert <Tab> or complete identifier {{{
 " if the cursor is after a keyword character
 function! MyTabOrComplete()
