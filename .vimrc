@@ -153,18 +153,6 @@ let g:tagbar_foldlevel = 1
 let g:tagbar_left = 1
 " }}}
 
-" Python-mode {{{
-
-" Load pylint code plugin
-let g:pymode_lint = 0
-" Switch pylint, pyflakes, pep8, mccabe code-checkers
-" Can have multiply values "pep8,pyflakes,mcccabe"
-let g:pymode_lint_checker = "pylint"
-" Check code every save
-let g:pymode_lint_write = 0
-
-" }}} 
-
 " Insert <Tab> or complete identifier {{{
 " if the cursor is after a keyword character
 function! MyTabOrComplete()
