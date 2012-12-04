@@ -20,3 +20,16 @@ syn keyword htmlArg contained contenteditable contextmenu draggable hidden item
 syn keyword htmlArg contained itemprop list subject spellcheck
 " o '-' (traÃ§o) causa problemas pq jÃ¡ existe um atributo 'data' definido
 syn match   htmlArg "\<\(data-[\-a-zA-Z0-9_]\+\)=" contained
+
+" Folding
+" add folding of tags, except for those that have no closing tag (must close
+" optional tags though, or the folding will be thrown off)
+syn region SynFold
+      \ start="\v\<%(param|link|isindex|input|hr|frame|col|br|basefont|base|area|img|meta)@!\z([a-z]+)%(\_s[^>]*[^>/])*\>"
+      \ end="</\z1>"
+      \ transparent fold keepend extend
+      \ containedin=ALLBUT,htmlComment
+
+" kill the excessive whitespace on linebreaks, etc.
+syn match htmlLinkWhite "\_s\{2,\}" contained containedin=htmlLink
+hi default link htmlLinkWhite Ignore 

@@ -398,13 +398,17 @@ let g:ctrlp_prompt_mappings = {
 " Folding {{{
 
 " Folding methods {{{
+" set default foldmethod to 'manual': zf to create a new fold
+set foldmethod=manual
 au FileType vim setlocal foldmethod=marker
+au FileType python setlocal foldmethod=indent
 au FileType css setlocal foldmethod=marker
-au FileType pentadactyl setlocal foldmethod=marker
-au BufNewFile,BufRead *.css  setlocal foldmarker={,}
+au FileType css setlocal foldmarker={,}
 au FileType javascript setlocal foldmethod=marker
 au FileType javascript setlocal foldmarker={,}
-au FileType html setlocal foldmethod=manual
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
+au FileType html setlocal foldmethod=syntax
 " }}}
 
 function! MyFoldText() " {{{
