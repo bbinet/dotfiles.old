@@ -21,9 +21,9 @@ if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != "/tmp/ssh-agent-$USER-screen" ]
 then
     rm -f /tmp/ssh-agent-$USER-screen
     ln -sf "$SSH_AUTH_SOCK" "/tmp/ssh-agent-$USER-screen"
-    echo "export DISPLAY=$DISPLAY" > "/tmp/ssh-x-display-$USER-screen"
+    echo "$DISPLAY" > "/tmp/ssh-x-display-$USER-screen"
 fi
-alias FIX_X_DISPLAY_SCREEN="source /tmp/ssh-x-display-$USER-screen && screen -X setenv DISPLAY $DISPLAY"
+alias FIX_X_DISPLAY_SCREEN="export DISPLAY=\$(cat /tmp/ssh-x-display-$USER-screen) && screen -X setenv DISPLAY \$DISPLAY"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
