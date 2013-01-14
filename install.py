@@ -53,6 +53,9 @@ if not os.path.exists('.bin/phantomjs'):
     run('tar jxvf /tmp/%s -C /tmp %s/bin/phantomjs' % (phjs_archive, phjs_dir))
     run('mv /tmp/%s/bin/phantomjs .bin/' % phjs_dir)
 
+# install httpie (user dependant)
+run('ln -sf %s ./.bin/http' % os.path.join(venv_global, 'bin', 'http'))
+
 # symlink all my dotfiles to my home directory
 for f in os.listdir('.'):
     if not any(fnmatch.fnmatch(f, p) for p in exclude):
