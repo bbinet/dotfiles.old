@@ -1,0 +1,2 @@
+[closure-library]
+path = %(HOME)s/.dotfiles/submodules/google-closure-library
