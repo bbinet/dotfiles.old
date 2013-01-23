@@ -1,3 +1,4 @@
+* move git-hg-again and virtualenv-burrito to the submodules/ directory
 * start a new .vimrc from scratch
 * list of vim plugins:
   * pathogen https://github.com/tpope/vim-pathogen
