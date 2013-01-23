@@ -112,3 +112,6 @@
 [submodule "submodules/cq"]
 	path = submodules/cq
 	url = git://github.com/twpayne/cq.git
+[submodule "submodules/google-closure-library"]
+	path = submodules/google-closure-library
+	url = git://github.com/jarib/google-closure-library.git
