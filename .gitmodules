@@ -115,3 +115,6 @@
 [submodule "submodules/google-closure-library"]
 	path = submodules/google-closure-library
 	url = git://github.com/jarib/google-closure-library.git
+[submodule "submodules/gjstags"]
+	path = submodules/gjstags
+	url = git://github.com/bbinet/gjstags.git
