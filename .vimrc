@@ -348,11 +348,6 @@ nnoremap <leader>, <c-w><c-w>
 let g:ackprg="ack-standalone -H --nocolor --nogroup --column --ignore-dir=buildout --ignore-dir=build"
 noremap <leader>a "cyiw:Ack <c-r>c<CR>
 
-" Tabularize
-noremap <leader>: :Tabularize /:<cr>
-noremap <leader>= :Tabularize /=<cr>
-noremap <leader>o vi{:Tabularize /:<cr>
-
 " Select previous selection
 nnoremap <expr> gV '`[' . getregtype()[0] . '`]'
 
