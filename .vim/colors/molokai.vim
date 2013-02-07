@@ -225,4 +225,10 @@ end
 hi Title ctermfg=LightBlue
 hi TabLineFill ctermbg=234 term=bold cterm=bold
 hi TabLine ctermbg=234 ctermfg=DarkGrey
-hi TabLineSel ctermbg=0 ctermfg=Green
+hi TabLineSel ctermbg=Black ctermfg=Green
+hi TabWinNum cterm=underline ctermfg=DarkGrey ctermbg=234
+hi TabWinNumSel ctermfg=Green ctermbg=Black
+hi TabNum term=bold cterm=underline ctermfg=White ctermbg=234
+hi TabNumSel term=bold cterm=bold ctermfg=Green ctermbg=Black
+hi TabSep ctermbg=234
+hi TabSepSel ctermbg=Black
