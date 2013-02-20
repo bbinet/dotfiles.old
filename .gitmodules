@@ -130,3 +130,6 @@
 [submodule ".vim/bundle/colorv.vim"]
 	path = .vim/bundle/colorv.vim
 	url = git://github.com/Rykka/colorv.vim.git
+[submodule "submodules/git-submodule-tools"]
+	path = submodules/git-submodule-tools
+	url = git://github.com/kollerma/git-submodule-tools.git
