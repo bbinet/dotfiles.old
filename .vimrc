@@ -226,6 +226,8 @@ endfunction
 
 call s:define_highlights()
 call s:define_signs()
+
+let g:quickfixsigns_blacklist_buffer = '^\(__.*__\|ControlP\|.*YankRing.*\|\|index\|NERD_tree_.*\|-MiniBufExplorer-\)$'
 " }}} 
 
 " Syntastic {{{
