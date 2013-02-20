@@ -130,3 +130,6 @@
 [submodule "submodules/git-submodule-tools"]
 	path = submodules/git-submodule-tools
 	url = git://github.com/kollerma/git-submodule-tools.git
+[submodule ".vim/bundle/tabman.vim"]
+	path = .vim/bundle/tabman.vim
+	url = git://github.com/kien/tabman.vim.git
