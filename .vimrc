@@ -176,14 +176,15 @@ set scrolloff=3
 nnoremap <F2> :set invpaste paste?<CR>
 imap <F2> <C-O><F2>
 set pastetoggle=<F2>
-function! ToggleNumber()
+function! ToggleNumberSignCol()
     if exists('+relativenumber')
         set relativenumber!
     else
         set number!
     endif
+    QuickfixsignsToggle
 endfunction
-nnoremap <F3> :call ToggleNumber()<CR>
+nnoremap <F3> :call ToggleNumberSignCol()<CR>
 nnoremap <silent> <F4> :YRShow<cr>
 inoremap <silent> <F4> <ESC>:YRShow<cr>
 nnoremap <F5> :GundoToggle<CR>
