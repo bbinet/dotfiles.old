@@ -211,15 +211,15 @@ let g:tagbar_left = 1
 " Quickfixsigns {{{
 " define own signs
 function! s:define_highlights()
-    highlight lineAdded guifg=#009900 guibg=NONE ctermfg=2 ctermbg=235
-    highlight lineModified guifg=#bbbb00 guibg=NONE ctermfg=3 ctermbg=235
-    highlight lineRemoved guifg=#ff2222 guibg=NONE ctermfg=1 ctermbg=235
+    highlight qfs_vcs_add ctermfg=2 ctermbg=NONE cterm=bold
+    highlight qfs_vcs_change ctermfg=3 ctermbg=NONE cterm=bold
+    highlight qfs_vcs_del ctermfg=1 ctermbg=NONE cterm=bold
 endfunction
 
 function! s:define_signs()
-    sign define QFS_VCS_ADD text=+ texthl=lineAdded
-    sign define QFS_VCS_CHANGE text=~ texthl=lineModified
-    sign define QFS_VCS_DEL text=_ texthl=lineRemoved
+    sign define QFS_VCS_ADD text=+ texthl=qfs_vcs_add
+    sign define QFS_VCS_CHANGE text=~ texthl=qfs_vcs_change
+    sign define QFS_VCS_DEL text=_ texthl=qfs_vcs_del
 endfunction
 
 call s:define_highlights()
