@@ -133,3 +133,6 @@
 [submodule ".vim/bundle/tabman.vim"]
 	path = .vim/bundle/tabman.vim
 	url = git://github.com/kien/tabman.vim.git
+[submodule ".vim/bundle/linediff.vim"]
+	path = .vim/bundle/linediff.vim
+	url = git://github.com/AndrewRadev/linediff.vim.git
