@@ -197,8 +197,12 @@ let g:yankring_history_file = '.vim_yankring_history'
 let g:yankring_clipboard_monitor = 0
 let g:yankring_manual_clipboard_check = 0
 function! YRRunAfterMaps()
-    " fix 'nnoremap Y y$<CR>' remapping
-    nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+    " Make Y yank to end of line.
+    " (fix 'nnoremap Y y$<CR>' remapping)
+    nnoremap Y :<C-U>YRYankCount 'y$'<CR>
+
+    " Don't clobber the yank register when pasting over text in visual mode.
+    vnoremap p :<c-u>YRPaste 'p', 'v'<cr>gv:YRYankRange 'v'<cr>
 endfunction
 " }}}
 
