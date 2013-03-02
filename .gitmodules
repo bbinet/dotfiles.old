@@ -100,9 +100,6 @@
 [submodule ".vim/bundle/ZoomWin"]
 	path = .vim/bundle/ZoomWin
 	url = git://github.com/vim-scripts/ZoomWin.git
-[submodule ".vim/bundle/vim-signature"]
-	path = .vim/bundle/vim-signature
-	url = git://github.com/kshenoy/vim-signature.git
 [submodule ".vim/bundle/vim-fakeclip"]
 	path = .vim/bundle/vim-fakeclip
 	url = git://github.com/kana/vim-fakeclip.git
@@ -124,3 +121,18 @@
 [submodule ".vim/bundle/jedi-vim"]
 	path = .vim/bundle/jedi-vim
 	url = git://github.com/davidhalter/jedi-vim.git
+[submodule ".vim/bundle/quickfixsigns_vim"]
+	path = .vim/bundle/quickfixsigns_vim
+	url = git://github.com/tomtom/quickfixsigns_vim.git
+[submodule ".vim/bundle/colorv.vim"]
+	path = .vim/bundle/colorv.vim
+	url = git://github.com/Rykka/colorv.vim.git
+[submodule "submodules/git-submodule-tools"]
+	path = submodules/git-submodule-tools
+	url = git://github.com/kollerma/git-submodule-tools.git
+[submodule ".vim/bundle/tabman.vim"]
+	path = .vim/bundle/tabman.vim
+	url = git://github.com/kien/tabman.vim.git
+[submodule ".vim/bundle/linediff.vim"]
+	path = .vim/bundle/linediff.vim
+	url = git://github.com/AndrewRadev/linediff.vim.git

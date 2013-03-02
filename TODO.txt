@@ -33,3 +33,14 @@
   * solarized? https://github.com/altercation/vim-colors-solarized
   * coffee-script? https://github.com/kchmck/vim-coffee-script
 
+* do I need a vim wiki? (that would be great if Pelican could support this)
+  * vimwiki  -- vimwiki plugin (vimscript #2226);
+  * viki  -- Viki/Deplate plugin (vimscript #861);
+  * org  -- Emacs Org-mode;
+  * taskpaper  -- TaskPaper (vimscript #2027);
+  * thevimoutliner  -- The Vim Outliner plugin (vimscript #517);
+  * vimoutliner  -- VimOutliner plugin (vimscript #3515);
+  * cwiki  -- vimscript #2176;
+  --> vim-voom may also be intersting: https://github.com/vim-scripts/VOoM
+  --> that would be great to have a vim-trello plugin based on trello api, see:
+      https://trello.com/board/trello-public-api/4ed7e27fe6abb2517a21383d
