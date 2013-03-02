@@ -233,7 +233,8 @@ inoremap <Tab> <C-R>=MyTabOrComplete()<CR>
 aug python
     au Filetype python inoremap <silent> <buffer> <F7> import pdb; pdb.set_trace()
     au Filetype python noremap <silent> <buffer> <F7> Oimport pdb; pdb.set_trace()<ESC>j
-    au FileType python setlocal omnifunc=pythoncomplete#Complete
+    " completion is now handled by vim-jedi
+    " au FileType python setlocal omnifunc=pythoncomplete#Complete
 aug end
 " }}}
 
