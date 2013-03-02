@@ -115,9 +115,6 @@
 [submodule "submodules/gjstags"]
 	path = submodules/gjstags
 	url = git://github.com/bbinet/gjstags.git
-[submodule "submodules/jsdoc"]
-	path = submodules/jsdoc
-	url = git://github.com/jsdoc3/jsdoc.git
 [submodule ".vim/bundle/jedi-vim"]
 	path = .vim/bundle/jedi-vim
 	url = git://github.com/davidhalter/jedi-vim.git
