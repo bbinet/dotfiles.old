@@ -133,3 +133,6 @@
 [submodule ".vim/bundle/linediff.vim"]
 	path = .vim/bundle/linediff.vim
 	url = git://github.com/AndrewRadev/linediff.vim.git
+[submodule "submodules/jsdoc"]
+	path = submodules/jsdoc
+	url = git://github.com/bbinet/jsdoc.git
