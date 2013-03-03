@@ -511,6 +511,7 @@ vmap gb :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR
 map <leader>p :CtrlP<CR>
 map <leader>P :CtrlPBuffer<CR>
 map <leader>e :CtrlPCurFile<CR>
+map <leader>t :CtrlPTag<CR>
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files && git ls-files -o --exclude-standard', 'find %s -type f']
 let g:ctrlp_mruf_exclude = '/tmp/.*\|.*\.git/.*'
 " Note: In some terminals, it’s not possible to remap <c-h> without also
