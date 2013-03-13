@@ -301,6 +301,10 @@ if [ -f ~/.venvburrito/startup.sh ]; then
     source ~/.venvburrito/startup.sh
 fi
 
+if [ -f ~/.dotfiles/submodules/autoenv/activate.sh ]; then
+    source ~/.dotfiles/submodules/autoenv/activate.sh
+fi
+
 before_bash_exit () {
     if ! [ -z "$VIRTUAL_ENV" ]
     then
