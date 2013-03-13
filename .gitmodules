@@ -136,3 +136,6 @@
 [submodule "submodules/jsdoc"]
 	path = submodules/jsdoc
 	url = git://github.com/bbinet/jsdoc.git
+[submodule "submodules/autoenv"]
+	path = submodules/autoenv
+	url = git://github.com/kennethreitz/autoenv.git
