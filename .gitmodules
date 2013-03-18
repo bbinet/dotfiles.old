@@ -136,3 +136,6 @@
 [submodule "submodules/autoenv"]
 	path = submodules/autoenv
 	url = git://github.com/kennethreitz/autoenv.git
+[submodule ".vim/bundle/vim-angry"]
+	path = .vim/bundle/vim-angry
+	url = git://github.com/b4winckler/vim-angry.git
