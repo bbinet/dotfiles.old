@@ -3,3 +3,4 @@ hg-git==0.3.2
 mercurial==1.7.5
 httpie
 nosier
+autopep8
