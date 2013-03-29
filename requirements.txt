@@ -4,3 +4,4 @@ mercurial==1.7.5
 httpie
 nosier
 autopep8
+nodeenv
