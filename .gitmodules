@@ -142,3 +142,6 @@
 [submodule ".vim/bundle/csv.vim"]
 	path = .vim/bundle/csv.vim
 	url = git://github.com/chrisbra/csv.vim.git
+[submodule ".vim/bundle/LaTeX-Box"]
+	path = .vim/bundle/LaTeX-Box
+	url = git://github.com/LaTeX-Box-Team/LaTeX-Box.git
