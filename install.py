@@ -23,6 +23,7 @@ cmd = vburrito + ' upgrade'
 if not os.path.exists(os.path.join(vburrito_dir)):
     os.makedirs(os.path.join(vburrito_dir, 'lib', 'python'))
     os.makedirs(os.path.join(vburrito_dir, 'bin'))
+if not os.path.exists(os.path.join(vburrito_dir, 'startup.sh')):
     cmd += ' firstrun'
 shutil.copyfile('virtualenv-burrito/virtualenv-burrito.py', vburrito)
 os.chmod(vburrito, 0755)
