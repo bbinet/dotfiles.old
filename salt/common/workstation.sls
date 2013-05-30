@@ -1,6 +1,6 @@
 workstationpkgs:
   pkg.installed:
-    - names:
+    - pkgs:
 
       # System
       - awesome
@@ -17,7 +17,7 @@ workstationpkgs:
 
       # Media
       - vlc
-      - gmplayer
+      - mplayer-gui
       - cheese
       - gtk-recordmydesktop
 

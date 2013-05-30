@@ -1,4 +1,4 @@
 commonpkgs:
   pkg.installed:
-    - names:
+    - pkgs:
       - exuberant-ctags
