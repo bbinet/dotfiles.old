@@ -12,4 +12,9 @@ commonpkgs:
       - git-svn
 
       # Utils
+      - ssh
       - bc
+      - tree
+
+      # System
+      - powertop
