@@ -18,3 +18,6 @@ commonpkgs:
 
       # System
       - powertop
+
+      # Server
+      - apache2
