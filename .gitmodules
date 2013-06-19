@@ -145,3 +145,6 @@
 [submodule ".vim/bundle/SQLUtilities"]
 	path = .vim/bundle/SQLUtilities
 	url = git://github.com/vim-scripts/SQLUtilities.git
+[submodule ".vim/bundle/align.vim"]
+	path = .vim/bundle/align.vim
+	url = git://github.com/createwindow/vimScripts_align.vim.git
