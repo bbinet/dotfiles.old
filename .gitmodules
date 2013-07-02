@@ -148,3 +148,6 @@
 [submodule ".vim/bundle/align.vim"]
 	path = .vim/bundle/align.vim
 	url = git://github.com/createwindow/vimScripts_align.vim.git
+[submodule ".vim/bundle/vim-tabber"]
+	path = .vim/bundle/vim-tabber
+	url = git://github.com/fweep/vim-tabber.git
