@@ -21,13 +21,6 @@ set hidden
 set switchbuf=useopen
 " }}}
 
-" Tab/spaces {{{
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
-set expandtab
-" }}}
-
 " Backups {{{
 if v:version >= 703
     set undofile

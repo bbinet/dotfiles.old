@@ -151,3 +151,6 @@
 [submodule ".vim/bundle/vim-tabber"]
 	path = .vim/bundle/vim-tabber
 	url = git://github.com/fweep/vim-tabber.git
+[submodule ".vim/bundle/vim-sleuth"]
+	path = .vim/bundle/vim-sleuth
+	url = git://github.com/tpope/vim-sleuth.git
