@@ -5,3 +5,4 @@ httpie
 nosier
 autopep8
 nodeenv
+regex
