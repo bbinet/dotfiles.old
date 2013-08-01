@@ -11,6 +11,9 @@ commonpkgs:
       - git-core
       - git-svn
 
+      # Header pkgs
+      - python-dev
+
       # Utils
       - ssh
       - bc
