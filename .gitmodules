@@ -151,3 +151,6 @@
 [submodule ".vim/bundle/vim-sleuth"]
 	path = .vim/bundle/vim-sleuth
 	url = git://github.com/tpope/vim-sleuth.git
+[submodule ".vim/bundle/emmet-vim"]
+	path = .vim/bundle/emmet-vim
+	url = git://github.com/mattn/emmet-vim.git
