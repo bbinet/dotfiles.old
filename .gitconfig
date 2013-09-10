@@ -36,6 +36,10 @@
 [merge]
     tool = vimdiff
 
+# http://stackoverflow.com/questions/948354/git-push-current-branch
+[push]
+    default = upstream
+
 [github]
     user = bbinet
 
