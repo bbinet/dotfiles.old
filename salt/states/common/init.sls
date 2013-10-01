@@ -18,6 +18,7 @@ commonpkgs:
       - ssh
       - bc
       - tree
+      - odt2txt
 
       # System
       - powertop
