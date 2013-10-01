@@ -36,6 +36,9 @@
 [merge]
     tool = vimdiff
 
+[diff "odf"]
+    textconv=odt2txt
+
 # http://stackoverflow.com/questions/948354/git-push-current-branch
 [push]
     default = upstream
