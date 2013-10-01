@@ -8,6 +8,9 @@ commonpkgs:
       - tmux
       - exuberant-ctags
       - python
+      - python-dev
+      - build-essential
+      - swig
       - git-core
       - git-svn
 
