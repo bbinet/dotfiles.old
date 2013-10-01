@@ -9,6 +9,7 @@ commonpkgs:
       - exuberant-ctags
       - python
       - python-dev
+      - libssl-dev
       - build-essential
       - swig
       - git-core
