@@ -6,3 +6,5 @@ pillar_roots:
   base:
     - ./pillar
 root_dir: ./
+ipc_mode: tcp
+user: bruno
