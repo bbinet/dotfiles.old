@@ -1,0 +1,31 @@
+#!/bin/bash
+
+VENV_BIN="$HOME/.virtualenvs/salt/bin"
+SALT_CALL="$VENV_BIN/salt-call"
+
+if [ ! -d $VENV_BIN ]; then
+    echo "$VENV_BIN dir does not exists. Trying to create a virtualenv..."
+    if [ -f ~/.venvburrito/startup.sh ]; then
+        source ~/.venvburrito/startup.sh
+    fi
+    mkvirtualenv salt
+fi
+if [ ! -d $VENV_BIN ]; then
+    echo "Cannot proceed: $VENV_BIN dir does not exist."
+    exit 1
+fi
+
+if [ ! -e $SALT_CALL ]; then
+    echo "$SALT_CALL file does not exists. Trying to install salt..."
+    $VENV_BIN/pip install salt
+fi
+if [ ! -e $SALT_CALL ]; then
+    echo "Cannot proceed: $SALT_CALL file does not exist."
+    exit 1
+fi
+
+export PATH=$VENV_BIN:$PATH
+unset PYTHONPATH
+
+cd ~/.dotfiles/salt
+sudo $SALT_CALL state.highstate -c .
