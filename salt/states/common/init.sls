@@ -10,6 +10,7 @@ commonpkgs:
       - python
       - python-dev
       - libssl-dev
+      - libzmq-dev
       - build-essential
       - swig
       - git-core
