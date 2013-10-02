@@ -22,7 +22,7 @@ workstationpkgs:
       - gtk-recordmydesktop
 
       # Network
-      - firefox
+      - {{ pillar['pkgs']['firefox'] }}
       - chromium-browser
       - gajim
       - gftp
