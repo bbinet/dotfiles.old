@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# This should be replaced with the salt-thin bundle that can be generated with:
+# salt-run -c . thin.generate
+# This will generate a tgz that can be uploaded somewhere anf then fetched with
+# curl to install salt.
+
 VENV_BIN="$HOME/.virtualenvs/salt/bin"
 SALT_CALL="$VENV_BIN/salt-call"
 
