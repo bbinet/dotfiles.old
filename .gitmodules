@@ -160,3 +160,6 @@
 [submodule ".vim/bundle/salt-vim"]
 	path = .vim/bundle/salt-vim
 	url = git://github.com/saltstack/salt-vim.git
+[submodule ".vim/bundle/vimwiki"]
+	path = .vim/bundle/vimwiki
+	url = git://github.com/vimwiki/vimwiki.git
