@@ -163,3 +163,6 @@
 [submodule ".vim/bundle/vimwiki"]
 	path = .vim/bundle/vimwiki
 	url = git://github.com/vimwiki/vimwiki.git
+[submodule ".vim/bundle/DrawIt"]
+	path = .vim/bundle/DrawIt
+	url = git://github.com/vim-scripts/DrawIt.git
