@@ -29,7 +29,7 @@ workstationpkgs:
 
       # Office
       - libreoffice
-      - epdfview
+      - zathura
 
       # Games
       - gcompris
