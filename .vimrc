@@ -180,6 +180,7 @@ let g:quickfixsigns_blacklist_buffer = '^\(__.*__\|ControlP\|.*YankRing.*\|\|ind
 " Syntastic {{{
 " disable signs
 let g:syntastic_enable_signs=0
+let g:syntastic_javascript_gjslint_conf = "-strict --custom_jsdoc_tags=todo"
 " }}} 
 
 " Highlight Word {{{
