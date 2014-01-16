@@ -436,7 +436,7 @@ nnoremap <c-w>V mAZZ<c-w>v`A
 
 " Gstatus shortcut
 noremap <leader>g :Gstatus<cr>
-
+noremap <leader>G :Gstatus<cr>:q<cr>
 " }}}
 
 " Bubbling {{{
