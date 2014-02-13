@@ -1,6 +1,6 @@
 git-up
 httpie
-nosier
+watchdog
 autopep8
 nodeenv
 regex
