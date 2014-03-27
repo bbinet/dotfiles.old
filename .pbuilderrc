@@ -8,7 +8,7 @@ STABLE_CODENAME="wheezy"
 STABLE_BACKPORTS_SUITE="$STABLE_CODENAME-backports"
 DEBIAN_SUITES=($UNSTABLE_CODENAME $TESTING_CODENAME $STABLE_CODENAME "unstable" "testing" "stable")
 UBUNTU_SUITES=("precise" "maverick" "lucid" "quantal")
-DEBIAN_MIRROR="ftp.fr.debian.org"
+DEBIAN_MIRROR="http.debian.net"
 UBUNTU_MIRROR="fr.archive.ubuntu.com"
 
 # Optionally use the changelog of a package to determine the suite to use if
@@ -69,7 +69,7 @@ BUILDUSERID=65534
 BUILDUSERNAME=nobody
 EXTRAPACKAGES="apt-utils"
 REMOVEPACKAGES="lilo"
-HOOKDIR=/var/cache/pbuilder/hooks
+HOOKDIR=/var/cache/pbuilder/hook.d
 unset DEBOOTSTRAPOPTS
 unset CCACHEDIR
 BINDMOUNTS="$BUILDRESULT"
@@ -95,5 +95,7 @@ Label: pbuilder
 Architecture: $ARCH
 EOF
 fi
+
+export http_proxy=http://localhost:3142
 
 # ---- END ------
