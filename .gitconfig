@@ -9,6 +9,7 @@
     interactive = auto
 
 [alias]
+    subtree = !/usr/share/doc/git/contrib/subtree/git-subtree.sh
     st = status
     ci = commit
     br = branch
