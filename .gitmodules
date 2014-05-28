@@ -163,3 +163,6 @@
 [submodule "submodules/vagrant-bash-completion"]
 	path = submodules/vagrant-bash-completion
 	url = git://github.com/kura/vagrant-bash-completion.git
+[submodule ".vim/bundle/jshint.vim"]
+	path = .vim/bundle/jshint.vim
+	url = git://github.com/wookiehangover/jshint.vim.git
