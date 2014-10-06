@@ -238,48 +238,6 @@ alias hub='~/.bin/hub-standalone'
 # cd to git root dir
 alias gitroot='cd $(git rev-parse --show-toplevel)'
 
-function git-co-externals() {
-    (
-    cd $(git rev-parse --show-toplevel) && git svn show-externals | grep "^/" |
-    while read a b c
-    do
-        # remove first character which is a '/'
-        local=${a:1}
-        if [ -z $c ]
-        then
-            url=$b
-            rev=""
-        else
-            url=$c
-            rev=$b
-        fi
-        mkdir -p $local
-        (
-        echo "-------------------------------------"
-        echo "cd $local"
-        cd $local && if [ -d .svn ]
-        then
-            echo "svn up $rev"
-            svn up $rev
-        elif [ -d .git ]
-        then
-            if [ -z $rev ]
-            then
-                echo "git svn rebase && git-co-externals"
-                git svn rebase && git-co-externals
-            else
-                echo "/!\ Can't issue 'git svn rebase' on a specific revision"
-                echo "You should not use a local git repository in that case"
-            fi
-        else
-            echo "svn co $rev $url ."
-            svn co $rev $url .
-        fi
-        )
-    done
-    )
-}
-
 export TERM="xterm-256color"
 export PATH=~/.bin:$PATH:~/.virtualenvs/syntax-checkers/bin
 
