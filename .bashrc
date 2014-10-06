@@ -222,18 +222,6 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-function svndiff () {
-    svn diff $@ | colordiff;
-}
-
-function findandedit() {
-    find . -name $@ -exec vim \{\} \;
-}
-
-alias svns='svn status --ignore-externals | grep -v .swp | grep -v .swo'
-alias svni='svn info'
-alias cvsstatus='cvs status 2>&1 | egrep "(^\? |Status: )" | grep -v Up-to-date'
-
 #export LC_ALL='fr_FR.UTF-8'
 
 export EDITOR=vim
@@ -243,8 +231,6 @@ export LESS='-XFR'
 export GREP_OPTIONS="--exclude-dir=\.svn"
 
 export PYTHONSTARTUP="$HOME/.pystartup"
-
-alias svnd='svn diff --diff-cmd colordiff'
 
 alias ack='~/.bin/ack-standalone'
 alias hub='~/.bin/hub-standalone'
