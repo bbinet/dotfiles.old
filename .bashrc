@@ -238,6 +238,8 @@ alias hub='~/.bin/hub-standalone'
 # cd to git root dir
 alias gitroot='cd $(git rev-parse --show-toplevel)'
 
+alias vagrant_sshargs="vagrant ssh-\"-o \" \$1 \"=\" \$2}'"
+
 export TERM="xterm-256color"
 export PATH=~/.bin:$PATH:~/.virtualenvs/syntax-checkers/bin
 
